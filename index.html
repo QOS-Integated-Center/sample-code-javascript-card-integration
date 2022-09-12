@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo card</title>
+</head>
+
+<body>
+    <h1>>Demo card</h1>
+    <p>
+        Payer 10 F CFA
+    </p>
+    <button onclick="sendRequest()" id="payButton "> Payé</button>
+
+    <script>
+
+        function sendRequest() {
+
+            // initiale body for request  ==> m = mandatory = obligatoire
+            var data = {
+                "type": "all", // in checkout value is mobile/card/all ==> m
+                "transref": "Test001235869", // transref ===> m et unique
+                "qosKey": "qos123456789", // is provided by qos platform  ==> m
+                "returnUrl": "https://www.qosic.com", // is callback redirection with parameter transref ans status ==> m
+                "amountDetails": {
+                    "totalAmount": 10, // amount wil be pay by customer //  ==> m
+                    "currency": "XOF"
+                },
+                "saleDetails": {
+                    "firstName": "jac", // m
+                    "lastName": "Djac", // m
+                    "middleName": "KJ",
+                    "nameSuffix": "jac",
+                    "title": "Mr",  // m
+                    "address1": "Cotonou", // m
+                    "address2": "Cococodji",
+                    "address4": "string",
+                    "locality": "Litoral",   // m
+                    "administrativeArea": "",
+                    "postalCode": "229",  // m
+                    "country": "Benin",  // m
+                    "district": "Bj",   // m
+                    "buildingNumber": "string",
+                    "email": "jacques@qosic.com",  // m
+                    "emailDomain": "string",
+                    "phoneNumber": "66895585",   // m
+                    "phoneType": "cel"  // m
+                }
+            }
+
+            fetch("http://localhost:9093/public/v1/initTransaction", {
+            // fetch("https://b-checkout-api.qosic.net/public/v1/initTransaction", {
+                method: "POST",
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            })
+             .then(response => response.json())
+            .then(res => {console.log(res)
+
+                // window.location.href = res.url
+                
+                // console.log("Request complete! response:", res);
+            }); 
+
+            /*  var xhr = new XMLHttpRequest();
+             xhr.open("POST", 'https://b-checkout-api.qosic.net/public/v1/initTransaction', true);
+             xhr.setRequestHeader('Content-Type', 'application/json');
+             xhr.onreadystatechange = function () {
+                 if (this.readyState != 4) return;
+ 
+                 if (this.status == 200) {
+                     var data = JSON.parse(this.responseText);
+                     console.log(data)
+ 
+                     // we get the returned data
+                 }
+ 
+                 // end of state change: it can be after some time (async)
+             };
+             xhr.send(JSON.stringify({
+                 value: data
+             })); */
+
+        }
+
+
+
+
+    </script>
+
+</body>
+
+</html>
