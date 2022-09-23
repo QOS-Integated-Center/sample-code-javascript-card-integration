@@ -22,8 +22,8 @@
             // initiale body for request  ==> m = mandatory = obligatoire
             var data = {
                 "type": "all", // in checkout value is mobile/card/all ==> m
-                "transref": "Test001235869", // transref ===> m et unique
-                "qosKey": "qos123456789", // is provided by qos platform  ==> m
+                "transref": "Test001235869sss", // transref ===> m et unique
+                "qosKey": "QCBJ001", // is provided by qos platform  ==> m
                 "returnUrl": "https://www.qosic.com", // is callback redirection with parameter transref ans status ==> m
                 "amountDetails": {
                     "totalAmount": 10, // amount wil be pay by customer //  ==> m
@@ -51,8 +51,9 @@
                 }
             }
 
-            fetch("http://localhost:9093/public/v1/initTransaction", {
-            // fetch("https://b-checkout-api.qosic.net/public/v1/initTransaction", {
+            fetch("http://74.208.84.251:9014/public/v1/initTransaction", {
+            // fetch("http://localhost:9011/public/v1/initTransaction", {
+            //fetch("https://b-checkout-api.qosic.net/public/v1/initTransaction", {
                 method: "POST",
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)
