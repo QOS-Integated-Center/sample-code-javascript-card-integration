@@ -11,9 +11,9 @@
 <body>
     <h1>>Demo card</h1>
     <p>
-        Payer 10 F CFA
+        Payer 100 F CFA
     </p>
-    <button onclick="sendRequest()" id="payButton "> Payé</button>
+    <button onclick="sendRequest()" id="payButton "> Init Paiement</button>
 
     <script>
 
@@ -22,11 +22,11 @@
             // initiale body for request  ==> m = mandatory = obligatoire
             var data = {
                 "type": "all", // in checkout value is mobile/card/all ==> m
-                "transref": "Test001235869sss", // transref ===> m et unique
+                "transref": new Date().getTime(), // transref ===> m et unique
                 "qosKey": "QCBJ001", // is provided by qos platform  ==> m
                 "returnUrl": "https://www.qosic.com", // is callback redirection with parameter transref ans status ==> m
                 "amountDetails": {
-                    "totalAmount": 10, // amount wil be pay by customer //  ==> m
+                    "totalAmount": 100, // amount wil be pay by customer //  ==> m
                     "currency": "XOF"
                 },
                 "saleDetails": {
