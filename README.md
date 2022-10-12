@@ -21,7 +21,7 @@ Methode : POST
 url:```console
 for tested : http://74.208.84.251:9014/public/v1/initTransaction
 
- for prod : https://b-checkout-api.qosic.net/public/v1/initTransaction 
+ for prod : https://b-card.qosic.net/public/v1/initTransaction 
 ```
 
 
